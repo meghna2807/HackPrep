@@ -1,7 +1,7 @@
 const generateIdeas = require("../services/ideaEngine");
 
 async function generateDomainIdeas(req,res) {
-    const { domain } = req.body;
+    const { domain,topN } = req.body;
 
     if(!domain){
         return res.status(400).json({
@@ -9,7 +9,7 @@ async function generateDomainIdeas(req,res) {
         })
     }
     
-    const result = generateIdeas(domain);
+    const result = generateIdeas(domain,topN);
 
     res.status(200).json({
         message: "Ideas generated successfully",
