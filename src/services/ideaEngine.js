@@ -1,5 +1,6 @@
 const ideas = require("../data/ideas");
 const scoreCard = require("../services/scoring.service");
+const generateRoadmap = require("../services/roadmap.service");
 
 
 function generateIdeas(domain,topN = 5){
@@ -19,15 +20,17 @@ function generateIdeas(domain,topN = 5){
     const scoredIdea = scoreCard.addScores(domainIdeas);
     const rankedIdea = scoreCard.rankIdea(scoredIdea);
 
-    let { topN } = req.body;
+    const validTopN = !topN || topN<=0 || isNaN(topN)? 5: Number(topN);
+    const topIdeas = rankedIdea.slice(0,validTopN);
 
-    if(!topN || topN <= 0 || isNaN(topN)){
-        topN = 5;
-    }
+    const finalIdeas = topIdeas.map(idea => {
+        return{
+            ...idea,
+            roadmap: generateRoadmap(idea)
+        };
+    });
 
-    
-
-    return rankedIdea.slice(0,topN);
+    return finalIdeas;
 }
 
 module.exports = generateIdeas
