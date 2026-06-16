@@ -11,8 +11,6 @@ async function generateDomainIdeas(req,res) {
     
     const result = generateIdeas(domain,topN);
 
-    console.log(result);
-
     res.status(200).json({
         message: "Ideas generated successfully",
         result: result

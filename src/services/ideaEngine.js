@@ -1,18 +1,23 @@
-const ideas = require("../data/ideas");
+const { ideas, aliases } = require("../data/ideas");
 const scoreCard = require("../services/scoring.service");
 const generateRoadmap = require("../services/roadmap.service");
+const cacheService = require("./cache.service");
+
 
 
 function generateIdeas(domain,topN = 5){
-    const aliases = {
-    finance: "fintech",
-    banking: "fintech",
-    health: "healthcare",
-    medical: "healthcare"
-    };
 
     if(aliases[domain]){
         domain = aliases[domain];
+    }
+
+    const cacheKey = `${domain}-${topN}`;
+
+    const cachedData = cacheService.get(cacheKey);
+
+    if(cachedData){
+        console.log("Cache Hit");
+        return cachedData;
     }
 
     const domainIdeas = ideas[domain] || [];
@@ -29,6 +34,8 @@ function generateIdeas(domain,topN = 5){
             roadmap: generateRoadmap(idea)
         };
     });
+
+    cacheService.set(cacheKey,finalIdeas);
 
     return finalIdeas;
 }
