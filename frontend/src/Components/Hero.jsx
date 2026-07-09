@@ -3,8 +3,8 @@ import { Sparkles, ArrowRight, Zap, Target, Bookmark } from "lucide-react";
 
 export default function Hero(){
     const handleScrollToForm = () => {
-        const fromSection = document.getElementsById("idea-generator-form-section");
-        if(fromSection){
+        const formSection = document.getElementById("idea-generator-form-section");
+        if(formSection){
             formSection.scrollIntoView({ behavior: "smooth" });
         }
     };

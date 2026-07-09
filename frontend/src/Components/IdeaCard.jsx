@@ -13,15 +13,15 @@ export default function IdeaCard({ idea, rank }) {
 
 
   const getComplexityBadgeStyles = (val) => {
-    switch (val?.toLowerCase()) {
-      case "low":
-        return "bg-emerald-50 text-emerald-700 border-emerald-200/50";
-      case "high":
-        return "bg-rose-50 text-rose-700 border-rose-200/50";
-      case "medium":
-      default:
+      if(val == 1){
+         return "bg-emerald-50 text-emerald-700 border-emerald-200/50";
+      }
+
+      if(val == 2){
         return "bg-amber-50 text-amber-700 border-amber-200/50";
-    }
+      }
+
+      return "bg-rose-50 text-rose-700 border-rose-200/50";
   };
 
   return (
@@ -65,7 +65,7 @@ export default function IdeaCard({ idea, rank }) {
           
   
           <div className={`rounded-lg border px-2.5 py-1 text-xs font-semibold uppercase tracking-wider ${getComplexityBadgeStyles(complexity)}`}>
-            Complexity: <span className="font-bold">{complexity}</span>
+            Complexity: <span className="font-bold">{complexity === 1 ?"Low":complexity === 2 ? "Medium" : "High"}</span>
           </div>
 
  
