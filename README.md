@@ -8,7 +8,7 @@ HackPrep is a full-stack MERN application that helps students generate hackathon
 [View Screenshots](assets/images)
 
 ## Demo Video
-[Watch HackPrep Demo](assets/videos/hackprep-demo.mp4)
+[Watch HackPrep Demo](assets/videos)
 
 ## Features
 
