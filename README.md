@@ -4,6 +4,12 @@ HackPrep is a full-stack MERN application that helps students generate hackathon
 
 ---
 
+## Project Screenshots
+[View Screenshots](assets/images)
+
+## Demo Video
+[Watch HackPrep Demo](assets/videos/hackprep-demo.mp4)
+
 ## Features
 
 - Generate hackathon project ideas based on domain
@@ -30,38 +36,6 @@ HackPrep is a full-stack MERN application that helps students generate hackathon
 - Git
 - GitHub
 - Postman
-
----
-
-## Project Structure
-
-```text
-HackPrep
-│
-├── frontend/
-│   ├── src/
-│   │   ├── Components/
-│   │   ├── services/
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   └── package.json
-│
-├── src/
-│   ├── controllers/
-│   ├── routes/
-│   ├── services/
-│   ├── middleware/
-│   ├── validators/
-│   ├── data/
-│   ├── db/
-│   ├── app.js
-│   └── server.js
-│
-├── package.json
-└── README.md
-```
-
----
 
 ## How It Works
 
@@ -110,10 +84,7 @@ Repeated requests with the same input return cached results instead of recalcula
 Input validation is implemented using Zod.
 
 Rules:
-
-- Domain is required.
-- Domain must be a string.
-- `topN` is optional.
+- `topN` is mandatory
 - `topN` must be a positive number.
 - Maximum value of `topN` is 10.
 
